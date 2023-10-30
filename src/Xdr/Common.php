@@ -7,7 +7,6 @@ namespace Irelance\Mozjs34\Xdr;
 
 use Irelance\Mozjs34\Constant;
 
-
 trait Common
 {
     protected function getRawHex($length)

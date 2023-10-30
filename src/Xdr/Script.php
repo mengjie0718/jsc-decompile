@@ -4,7 +4,9 @@
  */
 
 namespace Irelance\Mozjs34\Xdr;
-
+require_once __DIR__ . '/../Context.php';
+require_once __DIR__ . '/../Constant.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 use Irelance\Mozjs34\Context;
 use Irelance\Mozjs34\Constant;
 
@@ -16,7 +18,7 @@ use Irelance\Mozjs34\Constant;
  */
 trait Script
 {
-
+    protected $parseScriptIndex = 0;
     protected function parserHeader(Context $context)
     {
         
@@ -42,7 +44,7 @@ trait Script
         $scriptBits = array_flip(Constant::_ScriptBits);
         if ($scriptBit & (1 << $scriptBits['OwnSource'])) {
             $context->addSummary('hasSource', $this->todec(1));
-			//echo($this->todec(1));//zzw
+			// echo($this->todec(1));//zzw
             $context->addSummary('retrievable', $this->todec(1));
             if($context->getSummary('hasSource') && !$context->getSummary('retirevable')) {
                 $context->addSummary('sourceLength', $this->todec());

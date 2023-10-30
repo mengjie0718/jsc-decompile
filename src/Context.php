@@ -4,7 +4,9 @@
  
  */
 namespace Irelance\Mozjs34;
-
+require_once __DIR__ . '/Helper/Operation.php';
+require_once __DIR__ . '/Helper/Reveal.php';
+require_once __DIR__ . '/Helper/Stack.php';
 use Irelance\Mozjs34\Helper\Operation;
 use Irelance\Mozjs34\Helper\Reveal;
 use Irelance\Mozjs34\Helper\Stack;
@@ -21,7 +23,7 @@ class Context
     protected $content = '';
     protected $stack = [];
 
-    protected $argvs = [];
+    public $argvs = [];
     protected $summaries = [];
     protected $operations = [];
     protected $nodes = [];

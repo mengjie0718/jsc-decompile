@@ -19,7 +19,8 @@ trait Atom
 
     protected function getTwoByteChar()
     {
-        $char = '\u' . dechex($this->bytecodes[$this->parseIndex + 1]) . dechex($this->bytecodes[$this->parseIndex]);
+        $char = sprintf("\u%02X%02X", $this->bytecodes[$this->parseIndex + 1],$this->bytecodes[$this->parseIndex ]);
+        // $char = '\u' . $this->dec2hex($this->bytecodes[$this->parseIndex + 1]) . $this->dec2hex($this->bytecodes[$this->parseIndex]);
         $this->parseIndex += 2;
         return $char;
     }

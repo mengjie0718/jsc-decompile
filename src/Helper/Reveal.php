@@ -121,7 +121,10 @@ trait Reveal
                 if ($this->isDebug) {
                     echo $key, CLIENT_EOL;
                 }
-                $this->revealOperation($operation);
+                if(!is_null($operation)){
+                    $this->revealOperation($operation);
+                }
+                
                 $this->operations[$key]['isCover'] = true;
             }
         }
@@ -140,7 +143,33 @@ trait Reveal
         }
         echo '---------------------------------------', CLIENT_EOL;
     }
+    public function getContent()
+    {
+        foreach ($this->operations as $key => $operation) {
+            if (!$this->operations[$key]['isCover']) {
+                if ($this->isDebug) {
+                    echo $key, CLIENT_EOL;
+                }
+                $this->revealOperation($operation);
+                $this->operations[$key]['isCover'] = true;
+            }
+        }
 
+        ksort($this->storageScript);
+        $scriptKeys = array_keys($this->storageScript);
+        $scriptKeysCount = count($scriptKeys);
+        $reulst = array();
+        for ($i = 0; $i < $scriptKeysCount; $i++) {
+            $script = $this->storageScript[$scriptKeys[$i]];
+            if ($this->isDebug) {
+                $reulst=$reulst. '['. ($scriptKeys[$i] / 2). ']'. $script['value']. CLIENT_EOL;
+            } else {
+                array_push($reulst,$script['value']);
+                // $reulst=$reulst. $script['value']. CLIENT_EOL;
+            }
+        }
+       return $reulst;
+    }
     public function printArgv()
     {
         echo '------------------Argv------------------', CLIENT_EOL;

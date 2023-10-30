@@ -3,8 +3,14 @@
 /**
  
  */
-namespace Irelance\Mozjs34;
 
+namespace Irelance\Mozjs34;
+include 'Xdr/Common.php';
+include 'Xdr/Script.php';
+include 'Xdr/Atom.php';
+include 'Xdr/ObjectXdr.php';
+include 'Xdr/Scope.php';
+include 'Xdr/Operation.php';
 use Irelance\Mozjs34\Helper\Stack;
 
 class Decompile
@@ -35,6 +41,7 @@ class Decompile
     public function __destruct()
     {
         fclose($this->fp);
+        unset($this->bytecodes);
     }
 
     public function init()

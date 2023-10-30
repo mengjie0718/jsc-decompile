@@ -12,7 +12,8 @@ class Stack
     public $name;
     public $value;//raw input value
     public $script;//raw input script
-
+    public $operation;
+    public $parserIndex;
     public function __construct(array $props)
     {
         foreach ($props as $prop => $value) {

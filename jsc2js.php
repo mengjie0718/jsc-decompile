@@ -2,8 +2,9 @@
 /**
 
  */
-include 'vendor/autoload.php';
 
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/src/Decompile.php';
 
 $decompile = new Irelance\Mozjs34\Decompile($argv[1]);
 $decompile->run();
@@ -11,7 +12,7 @@ $decompile->run();
 $contexts = $decompile->getContexts();
 foreach ($contexts as $index => $context) {
     //if ($index==0) {
-        echo '==================================' . $index . '==================================S', CLIENT_EOL;
+        echo '==================================' . $index . '====S', CLIENT_EOL;
         /* @var \Irelance\Mozjs34\Context $context */
         $context->printProperties([
             //'Summaries',
@@ -26,6 +27,6 @@ foreach ($contexts as $index => $context) {
             //'TryNote',
             //'ScopeNote',
         ]);
-        echo '==========================================================================E', CLIENT_EOL;
+        echo '================================================E', CLIENT_EOL;
     //}
 }

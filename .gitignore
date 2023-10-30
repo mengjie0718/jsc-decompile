@@ -6,3 +6,7 @@ libmozjs-52.dylib
 
 /vendor/
 composer.lock
+composer.phar
+composer.zip
+bin
+composer
